@@ -1,0 +1,18 @@
+﻿Build Version 1.0.0
+* User can create and send messages that can be viewed
+
+
+Build Version 1.1.1
+* Replaced Bootstrap 4 files, and added JavaScript Refresh_Page() function, and GetMessage web service method to controller.
+
+
+Build Version 2.0.0 
+*  Ability to create users, major changes to table definitions of asp.roles and users.
+
+
+Build Version 2.1.3
+* Users can view servers they are apart of, and send messages under their user accounts.
+
+
+Build Version 2.3.0
+* Add Friend method added - Friend class, have been tweaked. Page to add friends added
