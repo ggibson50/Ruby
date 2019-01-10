@@ -1,0 +1,104 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* Add margin to top of the page, so that it isn't covered by the navbar */
+html {
+    margin-top: 3em;
+}
+/* Increase the size of the application name */
+.navbar .navbar-brand {
+    font-size: 2em;
+}
+/* Make placeholder text in fields semi-transparent */
+.navbar ::placeholder,
+.body-content ::placeholder {
+    opacity: 0.5;
+}
+
+/* Server List CSS */
+
+#server-list {
+    float: left;
+    width: 100px;
+    border: 3px;
+    padding: 10px;
+}
+
+.server {
+    padding-bottom: 10px;
+}
+
+#server-name {
+    text-align: center;
+    padding-left: 8px;
+    padding-top: 10px;
+}
+
+/* Server List CSS END*/
+
+/* Messages CSS */
+#refresh-event {
+    border: thin solid black;
+    border-radius: 3px;
+    overflow: auto;
+    width: 950px;
+    height: 200px;
+    overflow-x: hidden;
+    margin-left: 12em;
+}
+
+.message-header {
+    margin-left: 0.5em;
+}
+
+.message-header-time {
+    display: inline-block;
+    margin-left: 0.5em;
+}
+
+.message-body {
+    margin-left: 0.5em;
+}
+ /* Messages CSS END*/
+
+ /* Members */
+
+#member-list {
+    float: right;
+    width: 100px;
+    border: 3px;
+    padding: 10px;
+    vertical-align: top;
+}
+
+/* AddUserToServer CSS */
+.join-server-list {
+    margin-left: 12em;
+    float: right;
+    width: 100px;
+    border: 3px;
+    padding: 10px;
+    vertical-align: top;
+}

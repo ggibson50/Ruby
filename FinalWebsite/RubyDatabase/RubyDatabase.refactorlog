@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="e1a3fc23-35c5-4416-aff6-ed69f2388325" ChangeDateTime="12/10/2018 19:22:23">
+    <Property Name="ElementName" Value="[dbo].[Users].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3250a442-6728-424e-af61-fb1987f1c836" ChangeDateTime="12/10/2018 19:23:32">
+    <Property Name="ElementName" Value="[dbo].[Users].[FirstName ]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FirstName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5577bb02-340c-4f89-b6f5-8451f29c5dcf" ChangeDateTime="12/10/2018 19:30:26">
+    <Property Name="ElementName" Value="[dbo].[Friends].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Friends]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ded6e22f-76fa-4d5b-8f5a-b64de3b732dd" ChangeDateTime="12/10/2018 19:32:46">
+    <Property Name="ElementName" Value="[dbo].[Server].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Server]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ServerId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="67bbd478-0c00-4030-b167-073fca2098ca" ChangeDateTime="12/10/2018 19:35:57">
+    <Property Name="ElementName" Value="[dbo].[Server].[ServerName ]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Server]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ServerName" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d75701f6-17d7-48c9-af01-a2396e562996" ChangeDateTime="12/10/2018 20:00:46">
+    <Property Name="ElementName" Value="[dbo].[Roles].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Roles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoleId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c055be90-6454-4781-8f28-91146cfb6425" ChangeDateTime="12/10/2018 20:01:56">
+    <Property Name="ElementName" Value="[dbo].[Roles].[Is]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Roles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsMod" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="13c90ece-bae8-405f-83ed-3cf43bf4265b" ChangeDateTime="12/12/2018 18:49:30">
+    <Property Name="ElementName" Value="[dbo].[Chat].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Chat]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ChatId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c91200eb-f021-4236-8216-b8ef7e11c63d" ChangeDateTime="12/12/2018 20:11:17">
+    <Property Name="ElementName" Value="[dbo].[Friends].[UserId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Friends]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SentFromId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="97da61a3-9676-4e44-9bee-93cd1a2e3015" ChangeDateTime="12/12/2018 20:11:24">
+    <Property Name="ElementName" Value="[dbo].[Friends].[IsAdded]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Friends]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="SentToId" />
+  </Operation>
+</Operations>

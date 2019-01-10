@@ -1,0 +1,189 @@
+﻿@model Ruby.ViewModels.ChatViewModel
+    @using Ruby.ViewModels;
+
+<input type="hidden" id="CurrentServerId" value="@Model.CurrentServerId"/>
+<input type="hidden" id="CurrentUserId" value="@Model.CurrentUserId" />
+
+<div style="padding-top: 3em;">
+
+
+
+    <div id="server-list" class="col-md-4">
+        @foreach (var item in Model.Servers)
+        {
+            <div class="server">
+                <a>
+                    @{
+                        string url = Url.Content(
+                        Constants.SERVER_IMAGE_PATH +
+                        Constants.THUMBNAILS +
+                        item.ServerImage
+                        );
+
+                        string defaultImage = Url.Content(
+                            Constants.SERVER_IMAGE_PATH +
+                            Constants.THUMBNAILS +
+                            "default_server_img.png"
+                            );
+
+                        if (item.ServerImage != null)
+                        {
+                            <img src="@url" class="rounded-circle" style="height: 100px; width: 100px;"/>
+                        }
+                        else
+                        {
+                            <img src="@defaultImage" class="rounded-circle" />
+                        }
+                    }
+
+                    <div id="server-name">
+                        @Html.ActionLink(@item.ServerName, "Index", routeValues: new { serverId = item.ServerId }, htmlAttributes: new { @class = "nav-item" })
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+    <div id="member-list" class="col-md-4">
+        @foreach (var item in Model.Members)
+        {
+            <div class="members">
+                <div class="members-list">
+                    @if (item.User != null)
+                    {
+                    <div>@Html.ActionLink(@item.User.UserName, "Details", "Users", routeValues: new { id = item.UserId }, htmlAttributes: null)</div>
+                    }
+                    else
+                    {
+                        <div>Anonymous</div>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <div id="refresh-event" class="col-md-8">
+        @foreach (var item in Model.Chats)
+        {
+            <div class="message">
+                <div class="message-header">
+                    @if (item.User != null)
+                    {
+                        <div>@Html.ActionLink(@item.User.UserName, "Details", "Users", routeValues: new { id = item.UserId }, htmlAttributes: null)</div>
+                    }
+                    else
+                    {
+                        <div>anon</div>
+                    }
+
+                    <div class="message-header-time">
+                        @item.TimeSent.ToString("h:mm")
+                    </div>
+                </div>
+                <div class="message-body">
+                    @item.Message
+                </div>
+                <hr />
+            </div>
+        }
+    </div>
+
+    <br />
+
+    <div style="margin-left: 12em;">
+        <div class="form-group">
+            <input type="text" id="Message" placeholder="Your message..." size="150" style="height: 30px;" />
+        </div>
+        <div class="form-group">
+            <div class="">
+                <input type="submit" id="SendBtn" value="Send" class="btn btn-success" onclick="send_message()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        // Event listener for enter button...
+        $("#Message").keyup(function (event) {
+            event.preventDefault();
+            if (event.keyCode == 13) {
+                send_message();
+            }
+        });
+
+        function send_message()
+        {
+            // Web Service for messaging...
+            var serverId = $("#CurrentServerId").val();
+            var msg = $('#Message').val();
+
+            $.post(
+                '@Url.Action("SendMessage", "Chat")',
+                { serverId: serverId, message: msg  },
+                function (data) {
+                    $('#Message').val("");
+                    //document.location.reload();
+                    refresh_messges();
+                }
+            );
+        }
+
+        function add_user_to_server()
+        {
+            $.post(
+                '@Url.Action("AddUserToServer", "Chat")',
+                { },
+                function (data) {
+
+                }
+            )
+        }
+
+        function scroll_to_bottom()
+        {
+            var element = document.getElementById("refresh-event");
+            element.scrollTop = element.scrollHeight;
+        }
+
+        function refresh_messges()
+        {
+            var serverId = $("#CurrentServerId").val();
+
+            $.post(
+                '@Url.Action("GetMessages", "Chat")',
+                { serverId: serverId },
+                function (data) {
+                    $('#refresh-event').html("");
+
+                    $.each(data, function (index, msg) {
+                        var div = $('<div></div>');
+                        var divHeader = $('<div></div>');
+                        var divTime = $('<div></div>');
+                        var divBody = $('<div></div>');
+
+                        div.addClass("message");
+                        divHeader.addClass("message-header");
+                        divTime.addClass("message-header-time");
+                        divBody.addClass("message-body");
+
+                        divHeader.html(msg.UserName);
+                        divTime.html(dateFormat(Date.parse(msg.TimeSent), "h:MM TT"));
+                        divBody.html(msg.Message); 
+
+                        div.append(divHeader, divBody, $("<hr />"));
+                        divHeader.append(divTime);
+
+                        $('#refresh-event').append(div);
+                    });
+
+                    scroll_to_bottom(); // Scroll to bottom
+                }
+            );
+        }
+
+        refresh_messges(); // Page refresh
+    </script>
+}

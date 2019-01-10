@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Ruby.Models.Server>
+    @using Ruby.ViewModels;
+
+<h2>Servers</h2>
+
+@{ 
+    bool isAdmin =
+        Request.IsAuthenticated && User.IsInRole("Admin");
+}
+
+<p>
+    @Html.ActionLink("Create a server", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServerName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td></td>
+        <td>
+            @{
+                string url = Url.Content(
+                    Constants.SERVER_IMAGE_PATH +
+                    Constants.THUMBNAILS +
+                    item.ServerImage
+                    );
+
+                string defaultImage = Url.Content(
+                            Constants.SERVER_IMAGE_PATH +
+                            Constants.THUMBNAILS +
+                            "default_server_img.png"
+                            );
+
+                if (item.ServerImage != null)
+                {
+                    <img src="@url" class="rounded-circle" />
+                }
+                else
+                {
+                    <img src="@defaultImage" class="rounded-circle" style="height: 100px; width: 100px;"/>
+                }
+            }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServerName)
+        </td>
+        @*@if (isAdmin)
+        {*@
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ServerId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ServerId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ServerId })
+            </td>
+        }
+    </tr>
+}
+
+</table>

@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Server]
+(
+	[ServerId] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [ServerName] VARCHAR(50) NOT NULL,
+	[ServerImage] VARCHAR(200) NULL
+)
